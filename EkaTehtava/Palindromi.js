@@ -5,23 +5,33 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-function onPalindromi(sana) {
-  let pituus = sana.length;
+function muunnaPieniksi(sana) {
+  let tulos = "";
+  for (let i = 0; i < sana.length; i++) {
+    let merkki = sana[i];
+    let ascii = merkki.charCodeAt(0);
 
-  for (let i = 0; i < pituus / 2; i++) {
-    if (sana[i] !== sana[pituus - 1 - i]) {
-      return false;
+    // Jos merkki on iso kirjain (A-Z), muutetaan se pieneksi
+    if (ascii >= 65 && ascii <= 90) {
+      merkki = String.fromCharCode(ascii + 32);
     }
+
+    tulos += merkki;
   }
-  return true;
+  return tulos;
 }
 
-rl.question("Anna sana: ", function (syote) {
-  syote = syote.toLowerCase();
+function onkoPalindromi(sana) {
+  let kaannetty = "";
+  let pieneksiMuunnettu = muunnaPieniksi(sana);
 
-  if (onPalindromi(syote)) {
-    console.log("Sana on palindromi!");
-  } else {
-    console.log("Sana ei ole palindromi.");
+  for (let i = pieneksiMuunnettu.length - 1; i >= 0; i--) {
+    kaannetty += pieneksiMuunnettu[i];
   }
-});
+
+  return pieneksiMuunnettu === kaannetty;
+}
+
+// Funktion kutsu
+console.log(onkoPalindromi("saippuakauppias")); // true
+console.log(onkoPalindromi("testi")); // false
