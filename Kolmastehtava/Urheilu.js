@@ -13,7 +13,8 @@ class Henkilo {
     return nykyvuosi - this.syntymavuosi;
   }
 }
-
+// Urheilija-luokka perii Henkilo-luokan
+// ja lis채채 omat ominaisuudet ja metodit
 class Urheilija extends Henkilo {
   constructor(enimet, snimi, kutsumanimi, omapaino, syntymavuosi, laji, saavutukset) {
     super(enimet, snimi, kutsumanimi, syntymavuosi);
@@ -45,6 +46,8 @@ let Urheilija2 = new Urheilija("Matti", "Meik채l채inen", "Masa", 75, 1985, "J채�
 
 console.log(Urheilija1.show());
 console.log(Urheilija2.show());
+
+//Aikaisempi testi, ennen Urheilija-luokan luomista
 // const henkilo1 = new Henkilo("Pertti", "Er채reik채", "Pertsa", 1850);
 // console.log("Kokonimi: " + henkilo1.getKokoNimi());
 // console.log(henkilo1.getIka() + " Vuotias");
